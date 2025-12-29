@@ -233,7 +233,8 @@
   <h4>Epilogue</h4>
   <p>
     Website inspired by these absolute pieces of art <a target="_blank" href="https://motherfuckingwebsite.com/">1</a> |
-    <a target="_blank" href="http://bettermotherfuckingwebsite.com/">2</a> and <a target="_blank" href="https://www.vitsoe.com/us/about/good-design">these principles</a>.
+    <a target="_blank" href="http://bettermotherfuckingwebsite.com/">2</a> and <a target="_blank"
+      href="https://www.vitsoe.com/us/about/good-design">these principles</a>.
   </p>
   <footer>
     <a class="redirect" target="_blank" href="https://github.com/Jayesh-11">Github</a>
@@ -253,7 +254,7 @@
     const allLinks = document.getElementsByTagName('a');
     for (const link of allLinks) {
       const linkText = link?.innerText ?? 'what link?';
-      link?.addEventListener('click',()=>gtag('event', linkText, {link : linkText }))
+      link?.addEventListener('click', () => gtag('event', linkText, { link: linkText }))
     }
   </script>
 </body>
