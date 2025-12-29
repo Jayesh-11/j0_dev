@@ -252,7 +252,7 @@
   <script>
     const allLinks = document.getElementsByTagName('a');
     for (const link of allLinks) {
-      link.onclick(()=>gtag('event', link?.innerText ?? 'what link?'))
+      link?.addEventListener('click',()=>gtag('event', link?.innerText ?? 'what link?', {}))
     }
   </script>
 </body>
