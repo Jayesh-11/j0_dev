@@ -187,54 +187,7 @@
   <span>&thinsp;</span>
 
   <h4>Blogs</h4>
-  <section class="blog-list">
-    <li class=blog-list-element>
-      <code class=blog-pub-date>Jan 02 2026</code>
-      <a class=blog-name target=_blank
-        href=https://gist.github.com/Jayesh-11/cd236418c5e55138460b635cad8d3a67>RectangleConfig.json</a>
-    </li>
-    <li class="blog-list-element">
-      <code class="blog-pub-date">Dec 26 2025</code>
-      <a class="blog-name" target="_blank"
-        href="https://gist.github.com/Jayesh-11/f2616d34101044bf8f26c1b3aba18d7c">Google Keyboard looks better with
-        square keys</a>
-    </li>
-    <li class="blog-list-element">
-      <code class="blog-pub-date">Dec 19 2025</code>
-      <a class="blog-name" target="_blank"
-        href="https://gist.github.com/Jayesh-11/d623b8545be36ec0ff0ee053dff08ce6">Nested try catch issue in JS</a>
-    </li>
-    <li class="blog-list-element">
-      <code class="blog-pub-date">Dec 14 2025</code>
-      <a class="blog-name" target="_blank" href="https://gist.github.com/Jayesh-11/d31e79f6c03499d4b23f9fd68ba91ef7">How
-        to deal with notifications dark patterns</a>
-    </li>
-    <li class="blog-list-element">
-      <code class="blog-pub-date">Dec 06 2025</code>
-      <a class="blog-name" target="_blank"
-        href="https://gist.github.com/Jayesh-11/bf8ca359fc73e1f014af5ad7c85a39ed">karabiner.json</a>
-    </li>
-    <li class="blog-list-element">
-      <code class="blog-pub-date">Nov 09 2025</code>
-      <a class="blog-name" target="_blank"
-        href="https://gist.github.com/Jayesh-11/b85dd938df6dcea16cc25a39d8a3479f">Uninstalled Youtube from my phone</a>
-    </li>
-    <li class="blog-list-element">
-      <code class="blog-pub-date">Nov 09 2025</code>
-      <a class="blog-name" target="_blank"
-        href="https://gist.github.com/Jayesh-11/d20c3d3576ec74bd673dca6df6416b28">Phone is just 5 tools</a>
-    </li>
-    <li class="blog-list-element">
-      <code class="blog-pub-date">Nov 01 2025</code>
-      <a class="blog-name" target="_blank"
-        href="https://gist.github.com/Jayesh-11/9db37fe8f1f70b01c94edd0cf05be2e6">.zshrc</a>
-    </li>
-    <li class="blog-list-element">
-      <code class="blog-pub-date">Nov 01 2025</code>
-      <a class="blog-name" target="_blank"
-        href="https://gist.github.com/Jayesh-11/52d209ad0a9e638a8c000031d89492f7">kitty.conf</a>
-    </li>
-  </section>
+  <section id="blog-list" class="blog-list"></section>
   <span>&thinsp;</span>
   <h4>Epilogue</h4>
   <p>
@@ -257,6 +210,71 @@
     gtag('config', 'G-GVB59BB2Z1');
   </script>
   <script>
+    const blogs = [
+      {
+        date: "Jan 02 2026",
+        href: "https://gist.github.com/Jayesh-11/cd236418c5e55138460b635cad8d3a67",
+        blogName: "RectangleConfig.json"
+      },
+      {
+        date: "Dec 26 2025",
+        href: "https://gist.github.com/Jayesh-11/f2616d34101044bf8f26c1b3aba18d7c",
+        blogName: "Google Keyboard looks better with square keys"
+      },
+      {
+        date: "Dec 19 2025",
+        href: "https://gist.github.com/Jayesh-11/d623b8545be36ec0ff0ee053dff08ce6",
+        blogName: "Nested try catch issue in JS"
+      },
+      {
+        date: "Dec 14 2025",
+        href: "https://gist.github.com/Jayesh-11/d31e79f6c03499d4b23f9fd68ba91ef7",
+        blogName: "How to deal with notifications dark patterns"
+      },
+      {
+        date: "Dec 06 2025",
+        href: "https://gist.github.com/Jayesh-11/bf8ca359fc73e1f014af5ad7c85a39ed",
+        blogName: "karabiner.json"
+      },
+      {
+        date: "Nov 09 2025",
+        href: "https://gist.github.com/Jayesh-11/b85dd938df6dcea16cc25a39d8a3479f",
+        blogName: "Uninstalled Youtube from my phone"
+      },
+      {
+        date: "Nov 09 2025",
+        href: "https://gist.github.com/Jayesh-11/d20c3d3576ec74bd673dca6df6416b28",
+        blogName: "Phone is just 5 tools"
+      },
+      {
+        date: "Nov 01 2025",
+        href: "https://gist.github.com/Jayesh-11/9db37fe8f1f70b01c94edd0cf05be2e6",
+        blogName: ".zshrc"
+      },
+      {
+        date: "Nov 01 2025",
+        href: "https://gist.github.com/Jayesh-11/52d209ad0a9e638a8c000031d89492f7",
+        blogName: "kitty.conf"
+      }
+    ];
+
+    const blogListElement = document.getElementById('blog-list');
+    for(let i = 0; i < blogs.length; i++) {
+      const {date, href, blogName} = blogs[i];
+      const listElement = document.createElement('li');
+      const dateElement = document.createElement('code');
+      const anchorElement = document.createElement('a');
+      listElement.className = "blog-list-element";
+      dateElement.className = "blog-pub-date";
+      dateElement.innerText = date;
+      anchorElement.className = "blog-name";
+      anchorElement.target = "_blank";
+      anchorElement.href = href;
+      anchorElement.innerText = blogName;
+      listElement.appendChild(dateElement);
+      listElement.appendChild(anchorElement);
+      blogListElement.appendChild(listElement)
+    }
     const allLinks = document.getElementsByTagName('a');
     for (const link of allLinks) {
       const linkText = link?.innerText ?? 'what link?';
