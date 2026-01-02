@@ -271,14 +271,10 @@
       anchorElement.target = "_blank";
       anchorElement.href = href;
       anchorElement.innerText = blogName;
+      anchorElement.addEventListener('click', () => gtag('event', blogName, { link: blogName }))
       listElement.appendChild(dateElement);
       listElement.appendChild(anchorElement);
-      blogListElement.appendChild(listElement)
-    }
-    const allLinks = document.getElementsByTagName('a');
-    for (const link of allLinks) {
-      const linkText = link?.innerText ?? 'what link?';
-      link?.addEventListener('click', () => gtag('event', linkText, { link: linkText }))
+      blogListElement.appendChild(listElement);
     }
   </script>
 </body>
