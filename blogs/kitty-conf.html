@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kitty.conf - Jayesh Vyavahare</title>
+    <meta name="description" content="Kitty.conf as used on my 16inch m1 max and 27inch BenQ 1080p monitor">
+    <style type="text/css">
+        body {
+            margin: 40px auto;
+            max-width: 650px;
+            line-height: 1.6;
+            font-size: 16px;
+            color: #444;
+            padding: 0 10px;
+            font-family: monospace;
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .kitty-conf-code-block {
+            display: flex;
+            flex-direction: column;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-left: 4px solid #5933f3;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .kitty-conf-code-copy {
+            align-self: flex-end;
+            width: fit-content;
+            border-radius: 4px;
+            background-color: #FFF;
+            border: 1px solid #000;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+            font-family: monospace;
+            box-shadow: 1px 1px 1px #000;
+        }
+
+        .kitty-conf-code-copy:active {
+            transform: translateX(1px);
+            box-shadow: none;
+            background-color: #00ff08;
+        }
+
+        pre {
+            color: #666;
+            page-break-inside: avoid;
+            overflow: auto;
+            word-wrap: break-word;
+            max-height: 320px;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Kitty.conf</h1>
+    </header>
+    <div id="kitty-conf-code-block" class="kitty-conf-code-block">
+        <button id="kitty-conf-code-copy" class="kitty-conf-code-copy">Copy</button>
+        <pre id="kitty-conf-code">
+cursor_shape block
+
+shell_integration no-cursor
+
+scrollback_lines 10000
+
+sync_to_monitor yes
+
+enabled_layouts grid
+
+window_padding_width 2 2 0 0
+
+active_border_color #00ff00
+
+hide_window_decorations yes
+
+confirm_os_window_close 0
+
+tab_bar_edge top
+
+tab_bar_style powerline
+
+tab_powerline_style round
+
+inactive_border_color #525252
+
+font_size 16.0
+
+# active_tab_foreground   #000
+# active_tab_background   #eee
+
+# editor .
+    </pre>
+    </div>
+    <span>&thinsp;</span>
+    <footer>
+        <a class="redirect" target="_blank" href="https://github.com/Jayesh-11">Github</a>
+        <a class="redirect" target="_blank" href="https://x.com/Jayesh_eleven">X</a>
+        <a class="redirect" target="_blank" href="https://www.youtube.com/@jayesh_dev">Youtube</a>
+    </footer>
+    <script>
+        const kittyConfCode = document.getElementById('kitty-conf-code').innerText;
+        const kittyConfCodeCopyButton = document.getElementById('kitty-conf-code-copy');
+        kittyConfCodeCopyButton.addEventListener('click', () => window.navigator.clipboard.writeText(kittyConfCode))
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVB59BB2Z1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GVB59BB2Z1');
+    </script>
+</body>
+
+</html>

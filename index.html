@@ -253,14 +253,14 @@
       },
       {
         date: "Nov 01 2025",
-        id: "52d209ad0a9e638a8c000031d89492f7",
-        name: "kitty.conf"
+        name: "kitty.conf",
+        file: "blogs/kitty-conf.html"
       }
     ];
 
     const blogListElement = document.getElementById('blog-list');
     for (let i = 0; i < blogs.length; i++) {
-      const { date, id, name } = blogs[i];
+      const { date, id, name, file } = blogs[i];
       const listElement = document.createElement('li');
       const dateElement = document.createElement('code');
       const anchorElement = document.createElement('a');
@@ -269,7 +269,7 @@
       dateElement.innerText = date;
       anchorElement.className = "blog-name";
       anchorElement.target = "_blank";
-      anchorElement.href = `https://gist.github.com/Jayesh-11/${id}`;
+      anchorElement.href = file || `https://gist.github.com/Jayesh-11/${id}`;
       anchorElement.innerText = name;
       anchorElement.addEventListener('click', () => gtag('event', name, { link: name }))
       listElement.appendChild(dateElement);
