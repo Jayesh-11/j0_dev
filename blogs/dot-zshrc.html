@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>.zshrc - Jayesh Vyavahare</title>
+    <meta name="description" content=".zshrc as used on my 16inch m1 max and 27inch BenQ 1080p monitor">
+    <style type="text/css">
+        body {
+            margin: 40px auto;
+            max-width: 650px;
+            line-height: 1.6;
+            font-size: 16px;
+            color: #444;
+            padding: 0 10px;
+            font-family: monospace;
+        }
+
+        h1,
+        h2,
+        h3 {
+            line-height: 1.2
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .zshrc-conf-code-block {
+            display: flex;
+            flex-direction: column;
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-left: 4px solid #5933f3;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .zshrc-conf-code-copy {
+            align-self: flex-end;
+            width: fit-content;
+            border-radius: 4px;
+            background-color: #FFF;
+            border: 1px solid #000;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+            font-family: monospace;
+            box-shadow: 1px 1px 1px #000;
+        }
+
+        .zshrc-conf-code-copy:active {
+            transform: translateX(1px);
+            box-shadow: none;
+            background-color: #00ff08;
+        }
+
+        pre {
+            color: #666;
+            page-break-inside: avoid;
+            overflow: auto;
+            word-wrap: break-word;
+            max-height: 320px;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>.zshrc</h1>
+    </header>
+    <div id="zshrc-conf-code-block" class="zshrc-conf-code-block">
+        <button id="zshrc-conf-code-copy" class="zshrc-conf-code-copy">Copy</button>
+        <pre id="zshrc-conf-code">
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH="/opt/homebrew/bin:$PATH"
+
+#load go cli tools
+export GOPATH=$(go env GOPATH)
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+plugins=(
+  git
+  zsh-completions
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+alias ip="ipconfig getifaddr en0"
+
+# edit global zsh configuration
+alias zshconfig="vim ~/.zshrc"
+# reload zsh configuration
+alias zshsource="source ~/.zshrc"
+# reload zsh configuration
+alias ohmyzsh="cd ~/.oh-my-zsh"
+
+alias kittyconfig="nvim ~/.config/kitty/kitty.conf"
+
+alias nvim="$HOME/bin/nvim-macos-arm64/bin/nvim"
+
+# navigate to global ssh directory
+alias sshhome="cd ~/.ssh"
+# edit global ssh configuration
+alias sshconfig="vim ~/.ssh/config"
+
+
+
+ZSH_THEME="robbyrussell"
+
+zstyle ':omz:update' mode auto      # update automatically without asking
+
+autoload -U compinit && compinit
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="$(brew --prefix python)/libexec/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jayeshvyavahare/.lmstudio/bin"
+eval "$(starship init zsh)"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@11"
+export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export JAVA_HOME="/opt/homebrew/opt/openjdk@11"
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+export JAVA_HOME="/opt/homebrew/opt/openjdk"
+export JAVA_HOME=/opt/homebrew/opt/openjdk@21
+export PATH="$JAVA_HOME/bin:$PATH"
+
+# bun completions
+[ -s "/Users/jayeshvyavahare/.bun/_bun" ] && source "/Users/jayeshvyavahare/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if type brew &>/dev/null; then
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+    autoload -Uz compinit
+    compinit
+  fi
+
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    </pre>
+    </div>
+    <span>&thinsp;</span>
+    <footer>
+        <a class="redirect" target="_blank" href="https://github.com/Jayesh-11">Github</a>
+        <a class="redirect" target="_blank" href="https://x.com/Jayesh_eleven">X</a>
+        <a class="redirect" target="_blank" href="https://www.youtube.com/@jayesh_dev">Youtube</a>
+    </footer>
+    <script>
+        const zshrcConfCode = document.getElementById('zshrc-conf-code').innerText;
+        const zshrcConfCodeCopyButton = document.getElementById('zshrc-conf-code-copy');
+        zshrcConfCodeCopyButton.addEventListener('click', () => window.navigator.clipboard.writeText(zshrcConfCode))
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVB59BB2Z1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-GVB59BB2Z1');
+    </script>
+</body>
+
+</html>
