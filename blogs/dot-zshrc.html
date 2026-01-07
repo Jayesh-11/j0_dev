@@ -65,6 +65,14 @@
 
         footer {
             display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-socials {
+            display: flex;
             justify-content: center;
             gap: 12px;
         }
@@ -163,9 +171,12 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     </div>
     <span>&thinsp;</span>
     <footer>
-        <a class="redirect" target="_blank" href="https://github.com/Jayesh-11">Github</a>
-        <a class="redirect" target="_blank" href="https://x.com/Jayesh_eleven">X</a>
-        <a class="redirect" target="_blank" href="https://www.youtube.com/@jayesh_dev">Youtube</a>
+        <div class="footer-socials">
+            <a class="redirect" target="_blank" href="https://github.com/Jayesh-11">Github</a>
+            <a class="redirect" target="_blank" href="https://x.com/Jayesh_eleven">X</a>
+            <a class="redirect" target="_blank" href="https://www.youtube.com/@jayesh_dev">Youtube</a>
+        </div>
+        <a class="redirect" href="../index.html">Home</a>
     </footer>
     <script>
         const zshrcConfCode = document.getElementById('zshrc-conf-code').innerText;
