@@ -62,12 +62,17 @@
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
+      user-select: none;
     }
 
     .stack-highlight {
       border: solid #444;
       border-radius: 8px;
       padding: 1px 4px;
+    }
+
+    .xp-details-summary {
+      user-select: none;
     }
   </style>
 </head>
@@ -86,11 +91,11 @@
   <span>&thinsp;</span>
   <main>
 
-    <p>Hello, welcome to my personal garden. I am a developer and cat parent of 🐈‍⬛🐈‍⬛🐈🐈‍⬛. </p>
+    <p>Hello, welcome to my personal garden. I am a developer and cat parent of 🐈‍⬛🐈‍⬛🐈🐈‍⬛. I code, blog and make videos. Check out some of my work below.</p>
 
     <h4>Experience</h4>
     <details>
-      <summary>
+      <summary class="xp-details-summary">
         <a href="https://turing.com" target="_blank">Turing</a> (Nov 2024 - Present)
       </summary>
       <h4>Tech lead(8 months+)</h4>
@@ -131,7 +136,7 @@
       </p>
     </details>
     <details>
-      <summary>
+      <summary class="xp-details-summary">
         <a href="https://upliance.ai" target="_blank">upliance</a> (Sep 2022 - Nov 2024)
       </summary>
       <h4>Tech lead(9 months)</h4>
