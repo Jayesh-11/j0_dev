@@ -4,8 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kitty.conf | Jayesh Vyavahare</title>
-    <meta name="description" content="Kitty.conf as used on my 16inch m1 max and 27inch BenQ 1080p monitor">
+    <title>Nested try catch issue in JS | Jayesh Vyavahare</title>
+    <meta name="description"
+        content="Understanding nested try catch blocks in JavaScript and how to handle errors properly in async code.">
     <style type="text/css">
         body {
             margin: 40px auto;
@@ -27,7 +28,7 @@
             text-decoration: none;
         }
 
-        .kitty-conf-code-block {
+        .code-block {
             display: flex;
             flex-direction: column;
             background: #f4f4f4;
@@ -35,24 +36,6 @@
             border-left: 4px solid #5933f3;
             padding: 1rem;
             border-radius: 8px;
-        }
-
-        .kitty-conf-code-copy {
-            align-self: flex-end;
-            width: fit-content;
-            border-radius: 4px;
-            background-color: #FFF;
-            border: 1px solid #000;
-            cursor: pointer;
-            transition: all 0.1s ease-in-out;
-            font-family: monospace;
-            box-shadow: 1px 1px 1px #000;
-        }
-
-        .kitty-conf-code-copy:active {
-            transform: translateX(1px);
-            box-shadow: none;
-            background-color: #00ff08;
         }
 
         pre {
@@ -81,46 +64,71 @@
 
 <body>
     <header>
-        <h1>Kitty.conf</h1>
+        <h1>Nested try catch issue in JS</h1>
     </header>
-    <p>Kitty is a pretty cool terminal, below is my config.</p>
-    <div id="kitty-conf-code-block" class="kitty-conf-code-block">
-        <button id="kitty-conf-code-copy" class="kitty-conf-code-copy">Copy</button>
-        <pre id="kitty-conf-code">
-cursor_shape block
+    <main>
+        <hr>
+        <p>Lets say there are three promises</p>
+        <div class="code-block">
+            <pre>
+async function a() {
+  try{
+    await fakePromiseA()
+  } catch(e){ 
+    rollbackA()
+    throw new Error(e?.message)
+  } 
+}
+            </pre>
+        </div>
+        <br>
+        <div class="code-block">
+            <pre>
+async function b() {
+  try{
+    await fakePromiseA()
+  } catch(e){ 
+    // unhandled error
+  } 
+}
+            </pre>
+        </div>
+        <br>
+        <div class="code-block">
+            <pre>
+async function c() {
+  try {
+  
+  await a();
+  await b();
 
-shell_integration no-cursor
-
-scrollback_lines 10000
-
-sync_to_monitor yes
-
-enabled_layouts grid
-
-window_padding_width 2 2 0 0
-
-active_border_color #00ff00
-
-hide_window_decorations yes
-
-confirm_os_window_close 0
-
-tab_bar_edge top
-
-tab_bar_style powerline
-
-tab_powerline_style round
-
-inactive_border_color #525252
-
-font_size 16.0
-
-# active_tab_foreground   #000
-# active_tab_background   #eee
-
-# editor .
-    </pre>
-    </div>
+  } catch(e) {
+    rollbackC()
+    giveFeedbackAndLog()
+  }
+}
+            </pre>
+        </div>
+        <p>Now in this case if a fails the functionality halts and appropriate error are logged but not the same when b
+            fails the flow does not break and it seems like everything worked well.</p>
+        <h2>Solutions</h2>
+        <ol>
+            <li>
+                always rollback transactions
+            </li>
+            <li>
+                throw error if the try catch is nested and required to a flow blocking promise
+            </li>
+            <li>
+                at least log the error
+            </li>
+        </ol>
+        <p>some additonal info <a
+                href="https://softwareengineering.stackexchange.com/questions/118788/is-using-nested-try-catch-blocks-an-anti-pattern"
+                target="_blank">https://softwareengineering.stackexchange.com/questions/118788/is-using-nested-try-catch-blocks-an-anti-pattern</a>
+        </p>
+        <p>That's pretty much it!</p>
+    </main>
     <span>&thinsp;</span>
     <footer>
         <div class="footer-socials">
@@ -130,11 +138,6 @@ font_size 16.0
         </div>
         <a class="redirect" href="../index.html">Home</a>
     </footer>
-    <script>
-        const kittyConfCode = document.getElementById('kitty-conf-code').innerText;
-        const kittyConfCodeCopyButton = document.getElementById('kitty-conf-code-copy');
-        kittyConfCodeCopyButton.addEventListener('click', () => window.navigator.clipboard.writeText(kittyConfCode))
-    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVB59BB2Z1"></script>
     <script>
