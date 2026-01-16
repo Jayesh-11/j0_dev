@@ -102,7 +102,7 @@
     <script>
         const kittyConfCodeCopyButton = document.getElementById('kitty-conf-code-copy').addEventListener('click', async () => {
             const link = document.getElementsByClassName("Link--inTextBlock")[0].href;
-            const res = await fetch("https://gist.githubusercontent.com/Jayesh-11/52d209ad0a9e638a8c000031d89492f7/raw/256f0ebbc6b9721fb113a20a8ab6259ce2ca2260/kitty.conf");
+            const res = await fetch(link);
             const code = await res.text()
             window.navigator.clipboard.writeText(code)
         });
