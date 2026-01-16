@@ -27,40 +27,29 @@
             text-decoration: none;
         }
 
-        .kitty-conf-code-block {
-            display: flex;
-            flex-direction: column;
-            background: #f4f4f4;
-            border: 1px solid #ddd;
-            border-left: 4px solid #5933f3;
-            padding: 1rem;
-            border-radius: 8px;
-        }
-
         .kitty-conf-code-copy {
             align-self: flex-end;
             width: fit-content;
-            border-radius: 4px;
+            border-radius: 8px;
             background-color: #FFF;
             border: 1px solid #000;
             cursor: pointer;
-            transition: all 0.1s ease-in-out;
+            transition: all 0.1s cubic-bezier(0.23, 1, 0.320, 1);
             font-family: monospace;
-            box-shadow: 1px 1px 1px #000;
+            border: 2px solid #5933f3;
+            border-bottom-right-radius: 0px;
+            border-bottom-left-radius: 0px;
+            transform: translateY(2px);
         }
 
         .kitty-conf-code-copy:active {
-            transform: translateX(1px);
-            box-shadow: none;
+            transform: translateY(0px);
             background-color: #00ff08;
         }
 
-        pre {
-            color: #666;
-            page-break-inside: avoid;
-            overflow: auto;
-            word-wrap: break-word;
-            max-height: 320px;
+        .code-container {
+            display: flex;
+            flex-direction: column;
         }
 
         footer {
@@ -77,6 +66,19 @@
             gap: 12px;
         }
     </style>
+    <style>
+        .gist-data {
+            border-radius: 8px !important;
+            border: 2px solid #5933f3 !important;
+            border-left-width: 4px !important;
+            border-top-right-radius: 0px !important;
+        }
+
+        .gist-meta {
+            background-color: #FFF !important;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -84,42 +86,9 @@
         <h1>Kitty.conf</h1>
     </header>
     <p>Kitty is a pretty cool terminal, below is my config.</p>
-    <div id="kitty-conf-code-block" class="kitty-conf-code-block">
+    <div class="code-container">
         <button id="kitty-conf-code-copy" class="kitty-conf-code-copy">Copy</button>
-        <pre id="kitty-conf-code">
-cursor_shape block
-
-shell_integration no-cursor
-
-scrollback_lines 10000
-
-sync_to_monitor yes
-
-enabled_layouts grid
-
-window_padding_width 2 2 0 0
-
-active_border_color #00ff00
-
-hide_window_decorations yes
-
-confirm_os_window_close 0
-
-tab_bar_edge top
-
-tab_bar_style powerline
-
-tab_powerline_style round
-
-inactive_border_color #525252
-
-font_size 16.0
-
-# active_tab_foreground   #000
-# active_tab_background   #eee
-
-# editor .
-    </pre>
+        <script src="https://gist.github.com/Jayesh-11/52d209ad0a9e638a8c000031d89492f7.js"></script>
     </div>
     <span>&thinsp;</span>
     <footer>
@@ -131,9 +100,12 @@ font_size 16.0
         <a class="redirect" href="../index.html">Home</a>
     </footer>
     <script>
-        const kittyConfCode = document.getElementById('kitty-conf-code').innerText;
-        const kittyConfCodeCopyButton = document.getElementById('kitty-conf-code-copy');
-        kittyConfCodeCopyButton.addEventListener('click', () => window.navigator.clipboard.writeText(kittyConfCode))
+        const kittyConfCodeCopyButton = document.getElementById('kitty-conf-code-copy').addEventListener('click', async () => {
+            const link = document.getElementsByClassName("Link--inTextBlock")[0].href;
+            const res = await fetch("https://gist.githubusercontent.com/Jayesh-11/52d209ad0a9e638a8c000031d89492f7/raw/256f0ebbc6b9721fb113a20a8ab6259ce2ca2260/kitty.conf");
+            const code = await res.text()
+            window.navigator.clipboard.writeText(code)
+        });
     </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVB59BB2Z1"></script>
