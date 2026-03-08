@@ -54,6 +54,29 @@
       .xp-details-summary {
         user-select: none;
       }
+
+      .cat-container {
+        position: relative;
+      }
+
+      .cat {
+        cursor: pointer;
+      }
+
+      [role="tooltip"] {
+        visibility: hidden;
+        position: absolute;
+        top: -3rem;
+        left: -1rem;
+        background: rgb(173, 173, 173);
+        color: #444;
+        padding: 0.2rem;
+        border-radius: 0.25rem;
+      }
+      [aria-describedby]:hover + [role="tooltip"],
+      [role="tooltip"]:hover {
+        visibility: visible;
+      }
     </style>
   </head>
 
@@ -65,13 +88,35 @@
     <main>
       <p>
         Hello, welcome to my personal garden. I am a developer and cat parent of
-        <span style="cursor: pointer" title="Naoko">🐈‍⬛</span>
-        <span style="cursor: pointer" title="Midori">🐈‍⬛</span>
-        <span style="cursor: pointer" title="Sanji">🐈</span>
-        <span style="cursor: pointer" title="Himeno">🐈‍⬛</span>
-        <span style="cursor: pointer" title="Nami">🐈</span>
-        <span style="cursor: pointer" title="Ace">🐈</span>. I code, blog and
-        make videos. Check out some of my work below.
+        <span class="cat-container">
+          <span aria-describedby="Naoko-tooltip" class="cat">🐈‍⬛</span>
+          <span role="tooltip" id="Naoko-tooltip">Naoko</span>
+        </span>
+
+        <span class="cat-container">
+          <span aria-describedby="Midori-tooltip" class="cat">🐈‍⬛</span>
+          <span role="tooltip" id="Midori-tooltip">Midori</span>
+        </span>
+
+        <span class="cat-container">
+          <span aria-describedby="Sanji-tooltip" class="cat">🐈</span>
+          <span role="tooltip" id="Sanji-tooltip">Sanji</span>
+        </span>
+
+        <span class="cat-container">
+          <span aria-describedby="Himeno-tooltip" class="cat">🐈‍⬛</span>
+          <span role="tooltip" id="Himeno-tooltip">Himeno</span>
+        </span>
+
+        <span class="cat-container">
+          <span aria-describedby="Nami-tooltip" class="cat">🐈</span>
+          <span role="tooltip" id="Nami-tooltip">Nami</span>
+        </span>
+
+        <span class="cat-container">
+          <span aria-describedby="Ace-tooltip" class="cat">🐈</span>
+          <span role="tooltip" id="Ace-tooltip">Ace</span> </span
+        >. I code, blog and make videos. Check out some of my work below.
       </p>
 
       <h4>Experience</h4>
