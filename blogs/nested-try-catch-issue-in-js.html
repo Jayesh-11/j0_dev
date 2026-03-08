@@ -1,76 +1,77 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Nested try catch issue in JS | Jayesh Vyavahare</title>
-    <meta name="description"
-        content="Understanding nested try catch blocks in JavaScript and how to handle errors properly in async code.">
+    <meta
+      name="description"
+      content="Understanding nested try catch blocks in JavaScript and how to handle errors properly in async code."
+    />
     <style type="text/css">
-        body {
-            margin: 40px auto;
-            max-width: 650px;
-            line-height: 1.6;
-            font-size: 16px;
-            color: #444;
-            padding: 0 10px;
-            font-family: monospace;
-        }
+      body {
+        margin: 40px auto;
+        max-width: 650px;
+        line-height: 1.6;
+        font-size: 16px;
+        color: #444;
+        padding: 0 10px;
+        font-family: monospace;
+      }
 
-        h1,
-        h2,
-        h3 {
-            line-height: 1.2
-        }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+      }
 
-        a {
-            text-decoration: none;
-        }
+      a {
+        text-decoration: none;
+      }
 
-        .code-block {
-            display: flex;
-            flex-direction: column;
-            background: #f4f4f4;
-            border: 1px solid #ddd;
-            border-left: 4px solid #5933f3;
-            padding: 1rem;
-            border-radius: 8px;
-        }
+      .code-block {
+        display: flex;
+        flex-direction: column;
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-left: 4px solid #5933f3;
+        padding: 1rem;
+        border-radius: 8px;
+      }
 
-        pre {
-            color: #666;
-            page-break-inside: avoid;
-            overflow: auto;
-            word-wrap: break-word;
-            max-height: 320px;
-        }
+      pre {
+        color: #666;
+        page-break-inside: avoid;
+        overflow: auto;
+        word-wrap: break-word;
+        max-height: 320px;
+      }
 
-        footer {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-        }
+      footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
 
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
+      .footer-socials {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Nested try catch issue in JS</h1>
+      <h1>Nested try catch issue in JS</h1>
     </header>
     <main>
-        <hr>
-        <p>Lets say there are three promises</p>
-        <div class="code-block">
-            <pre>
+      <hr />
+      <p>Lets say there are three promises</p>
+      <div class="code-block">
+        <pre>
 async function a() {
   try{
     await fakePromiseA()
@@ -79,11 +80,12 @@ async function a() {
     throw new Error(e?.message)
   } 
 }
-            </pre>
-        </div>
-        <br>
-        <div class="code-block">
-            <pre>
+            </pre
+        >
+      </div>
+      <br />
+      <div class="code-block">
+        <pre>
 async function b() {
   try{
     await fakePromiseA()
@@ -91,11 +93,12 @@ async function b() {
     // unhandled error
   } 
 }
-            </pre>
-        </div>
-        <br>
-        <div class="code-block">
-            <pre>
+            </pre
+        >
+      </div>
+      <br />
+      <div class="code-block">
+        <pre>
 async function c() {
   try {
   
@@ -107,45 +110,63 @@ async function c() {
     giveFeedbackAndLog()
   }
 }
-            </pre>
-        </div>
-        <p>Now in this case if a fails the functionality halts and appropriate error are logged but not the same when b
-            fails the flow does not break and it seems like everything worked well.</p>
-        <h2>Solutions</h2>
-        <ol>
-            <li>
-                always rollback transactions
-            </li>
-            <li>
-                throw error if the try catch is nested and required to a flow blocking promise
-            </li>
-            <li>
-                at least log the error
-            </li>
-        </ol>
-        <p>some additonal info <a
-                href="https://softwareengineering.stackexchange.com/questions/118788/is-using-nested-try-catch-blocks-an-anti-pattern"
-                target="_blank">https://softwareengineering.stackexchange.com/questions/118788/is-using-nested-try-catch-blocks-an-anti-pattern</a>
-        </p>
-        <p>That's pretty much it!</p>
+            </pre
+        >
+      </div>
+      <p>
+        Now in this case if a fails the functionality halts and appropriate
+        error are logged but not the same when b fails the flow does not break
+        and it seems like everything worked well.
+      </p>
+      <h2>Solutions</h2>
+      <ol>
+        <li>always rollback transactions</li>
+        <li>
+          throw error if the try catch is nested and required to a flow blocking
+          promise
+        </li>
+        <li>at least log the error</li>
+      </ol>
+      <p>
+        some additonal info
+        <a
+          href="https://softwareengineering.stackexchange.com/questions/118788/is-using-nested-try-catch-blocks-an-anti-pattern"
+          target="_blank"
+          >https://softwareengineering.stackexchange.com/questions/118788/is-using-nested-try-catch-blocks-an-anti-pattern</a
+        >
+      </p>
+      <p>That's pretty much it!</p>
     </main>
     <span>&thinsp;</span>
     <footer>
-        <div class="footer-socials">
-            <a class="redirect" target="_blank" href="https://github.com/Jayesh-11">Github</a>
-            <a class="redirect" target="_blank" href="https://x.com/Jayesh_eleven">X</a>
-            <a class="redirect" target="_blank" href="https://www.youtube.com/@jayesh_dev">Youtube</a>
-        </div>
-        <a class="redirect" href="../index.html">Home</a>
+      <div class="footer-socials">
+        <a class="redirect" target="_blank" href="https://github.com/Jayesh-11"
+          >Github</a
+        >
+        <a class="redirect" target="_blank" href="https://x.com/Jayesh_eleven"
+          >X</a
+        >
+        <a
+          class="redirect"
+          target="_blank"
+          href="https://www.youtube.com/@jayesh_dev"
+          >Youtube</a
+        >
+      </div>
+      <a class="redirect" href="../index.html">Home</a>
     </footer>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVB59BB2Z1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-GVB59BB2Z1"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-GVB59BB2Z1');
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-GVB59BB2Z1");
     </script>
-</body>
-
+  </body>
 </html>

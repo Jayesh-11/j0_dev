@@ -1,149 +1,193 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" dir="ltr">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Why and how I uninstalled Youtube from my phone | Jayesh Vyavahare</title>
-    <meta name="description"
-        content="Finally, removed youtube from my phone, its quite pleasant feeling. Read below why and how I did it.">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Why and how I uninstalled Youtube from my phone | Jayesh Vyavahare
+    </title>
+    <meta
+      name="description"
+      content="Finally, removed youtube from my phone, its quite pleasant feeling. Read below why and how I did it."
+    />
     <style type="text/css">
-        body {
-            margin: 40px auto;
-            max-width: 650px;
-            line-height: 1.6;
-            font-size: 16px;
-            color: #444;
-            padding: 0 10px;
-            font-family: monospace;
-        }
+      body {
+        margin: 40px auto;
+        max-width: 650px;
+        line-height: 1.6;
+        font-size: 16px;
+        color: #444;
+        padding: 0 10px;
+        font-family: monospace;
+      }
 
-        h1,
-        h2,
-        h3 {
-            line-height: 1.2
-        }
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+      }
 
-        a {
-            text-decoration: none;
-        }
+      a {
+        text-decoration: none;
+      }
 
-        .uninstall-code-block {
-            display: flex;
-            flex-direction: column;
-            background: #f4f4f4;
-            border: 1px solid #ddd;
-            border-left: 4px solid #5933f3;
-            padding: 1rem;
-            border-radius: 8px;
-        }
+      .uninstall-code-block {
+        display: flex;
+        flex-direction: column;
+        background: #f4f4f4;
+        border: 1px solid #ddd;
+        border-left: 4px solid #5933f3;
+        padding: 1rem;
+        border-radius: 8px;
+      }
 
-        .uninstall-code-copy {
-            align-self: flex-end;
-            width: fit-content;
-            border-radius: 4px;
-            background-color: #FFF;
-            border: 1px solid #000;
-            cursor: pointer;
-            transition: all 0.1s ease-in-out;
-            font-family: monospace;
-            box-shadow: 1px 1px 1px #000;
-        }
+      .uninstall-code-copy {
+        align-self: flex-end;
+        width: fit-content;
+        border-radius: 4px;
+        background-color: #fff;
+        border: 1px solid #000;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+        font-family: monospace;
+        box-shadow: 1px 1px 1px #000;
+      }
 
-        .uninstall-code-copy:active {
-            transform: translateX(1px);
-            box-shadow: none;
-            background-color: #00ff08;
-        }
+      .uninstall-code-copy:active {
+        transform: translateX(1px);
+        box-shadow: none;
+        background-color: #00ff08;
+      }
 
-        pre {
-            color: #666;
-            page-break-inside: avoid;
-            overflow: auto;
-            word-wrap: break-word;
-            max-height: 320px;
-        }
+      pre {
+        color: #666;
+        page-break-inside: avoid;
+        overflow: auto;
+        word-wrap: break-word;
+        max-height: 320px;
+      }
 
-        footer {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 12px;
-        }
+      footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
 
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
+      .footer-socials {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>Why and how I uninstalled Youtube from my phone</h1>
+      <h1>Why and how I uninstalled Youtube from my phone</h1>
     </header>
     <main>
-        <hr>
-        <h4>I don't prefer having youtube on my phone for many reasons</h4>
-        <ol>
-            <li>I am on a haitus of not watching youtube(its been like 5-6 months).</li>
-            <li>I went on hiatus because youtube became annoying because it started doing some weird stuff like opening
-                shorts on opening YT.</li>
-            <li>It went against my <a href="./phone-is-just-6-tools.html">reasons
-                    to own phone</a>.</li>
-            <li>Even though I keep my feed religiously clean, I was being recommeded cheap content, less contributing
-                spectrum content.</li>
-            <li>It keeps changing UI for speeding up content, sometimes it shows a slider, sometimes it shows a long
-                list of speed list(1.75x, 1.80x, 1.85x), its one of the dumbest things.</li>
-            <li>This one is on me, I had this bad habit of keep playing YT in background when working listening to Theo
-                or primegen, but it caused me a lot of brain fog when I was actually trying to work + I wasn't
-                actually absorbing any information from listening to that stuff for hours. After stopping that brain fog
-                was cleared at least.</li>
-            <li>Those stupid surveys with that music in background.</li>
-            <li>The stupid miniplayer which you can only close when its on left side of the screen.</li>
-        </ol>
-        <h4>Here's how I uninstalled Youtube</h4>
-        <ol>
-            <li>
-                <a href="https://www.techmesto.com/uninstall-pre-installed-apps-from-android-phone/#google_vignette"
-                    target="_blank">How to do it</a>
-            </li>
-            <li>commands</li>
-        </ol>
-        <div id="uninstall-code-block" class="uninstall-code-block">
-            <button id="uninstall-code-copy" class="uninstall-code-copy">Copy</button>
-            <pre id="uninstall-code">
+      <hr />
+      <h4>I don't prefer having youtube on my phone for many reasons</h4>
+      <ol>
+        <li>
+          I am on a haitus of not watching youtube(its been like 5-6 months).
+        </li>
+        <li>
+          I went on hiatus because youtube became annoying because it started
+          doing some weird stuff like opening shorts on opening YT.
+        </li>
+        <li>
+          It went against my
+          <a href="./phone-is-just-6-tools.html">reasons to own phone</a>.
+        </li>
+        <li>
+          Even though I keep my feed religiously clean, I was being recommeded
+          cheap content, less contributing spectrum content.
+        </li>
+        <li>
+          It keeps changing UI for speeding up content, sometimes it shows a
+          slider, sometimes it shows a long list of speed list(1.75x, 1.80x,
+          1.85x), its one of the dumbest things.
+        </li>
+        <li>
+          This one is on me, I had this bad habit of keep playing YT in
+          background when working listening to Theo or primegen, but it caused
+          me a lot of brain fog when I was actually trying to work + I wasn't
+          actually absorbing any information from listening to that stuff for
+          hours. After stopping that brain fog was cleared at least.
+        </li>
+        <li>Those stupid surveys with that music in background.</li>
+        <li>
+          The stupid miniplayer which you can only close when its on left side
+          of the screen.
+        </li>
+      </ol>
+      <h4>Here's how I uninstalled Youtube</h4>
+      <ol>
+        <li>
+          <a
+            href="https://www.techmesto.com/uninstall-pre-installed-apps-from-android-phone/#google_vignette"
+            target="_blank"
+            >How to do it</a
+          >
+        </li>
+        <li>commands</li>
+      </ol>
+      <div id="uninstall-code-block" class="uninstall-code-block">
+        <button id="uninstall-code-copy" class="uninstall-code-copy">
+          Copy
+        </button>
+        <pre id="uninstall-code">
 adb shell
 pm list packages
 pm uninstall -k --user 0
 com.google.android.youtube
-</pre>
-        </div>
+</pre
+        >
+      </div>
     </main>
     <span>&thinsp;</span>
     <footer>
-        <div class="footer-socials">
-            <a class="redirect" target="_blank" href="https://github.com/Jayesh-11">Github</a>
-            <a class="redirect" target="_blank" href="https://x.com/Jayesh_eleven">X</a>
-            <a class="redirect" target="_blank" href="https://www.youtube.com/@jayesh_dev">Youtube</a>
-        </div>
-        <a class="redirect" href="../index.html">Home</a>
+      <div class="footer-socials">
+        <a class="redirect" target="_blank" href="https://github.com/Jayesh-11"
+          >Github</a
+        >
+        <a class="redirect" target="_blank" href="https://x.com/Jayesh_eleven"
+          >X</a
+        >
+        <a
+          class="redirect"
+          target="_blank"
+          href="https://www.youtube.com/@jayesh_dev"
+          >Youtube</a
+        >
+      </div>
+      <a class="redirect" href="../index.html">Home</a>
     </footer>
     <script>
-        const uninstallYTCode = document.getElementById('uninstall-code').innerText;
-        const uninstallYTCodeCopyButton = document.getElementById('uninstall-code-copy');
-        uninstallYTCodeCopyButton.addEventListener('click', () => window.navigator.clipboard.writeText(uninstallYTCode))
+      const uninstallYTCode =
+        document.getElementById("uninstall-code").innerText;
+      const uninstallYTCodeCopyButton = document.getElementById(
+        "uninstall-code-copy",
+      );
+      uninstallYTCodeCopyButton.addEventListener("click", () =>
+        window.navigator.clipboard.writeText(uninstallYTCode),
+      );
     </script>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GVB59BB2Z1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-GVB59BB2Z1"
+    ></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-GVB59BB2Z1');
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-GVB59BB2Z1");
     </script>
-</body>
-
+  </body>
 </html>
