@@ -29,31 +29,28 @@
         text-decoration: none;
       }
 
-      .karabiner-json-code-block {
+      .code-container {
         display: flex;
         flex-direction: column;
-        background: #f4f4f4;
-        border: 1px solid #ddd;
-        border-left: 4px solid #5933f3;
-        padding: 1rem;
-        border-radius: 8px;
       }
 
       .karabiner-json-code-copy {
         align-self: flex-end;
         width: fit-content;
-        border-radius: 4px;
+        border-radius: 8px;
         background-color: #fff;
         border: 1px solid #000;
         cursor: pointer;
-        transition: all 0.1s ease-in-out;
+        transition: all 0.1s cubic-bezier(0.23, 1, 0.32, 1);
         font-family: monospace;
-        box-shadow: 1px 1px 1px #000;
+        border: 2px solid #5933f3;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        transform: translateY(2px);
       }
 
       .karabiner-json-code-copy:active {
-        transform: translateX(1px);
-        box-shadow: none;
+        transform: translateX(0px);
         background-color: #00ff08;
       }
 
@@ -79,6 +76,18 @@
         gap: 12px;
       }
     </style>
+    <style>
+      .gist-data {
+        border-radius: 8px !important;
+        border: 2px solid #5933f3 !important;
+        border-left-width: 4px !important;
+        border-top-right-radius: 0px !important;
+      }
+
+      .gist-meta {
+        background-color: #fff !important;
+      }
+    </style>
   </head>
 
   <body>
@@ -90,168 +99,11 @@
       key it even got even better, I'll add more details here, till then
       checkout this config.
     </p>
-    <div id="karabiner-json-code-block" class="karabiner-json-code-block">
+    <div class="code-container">
       <button id="karabiner-json-code-copy" class="karabiner-json-code-copy">
         Copy
       </button>
-      <pre id="karabiner-json-code">
-{
-    "global": { "show_in_menu_bar": false },
-    "profiles": [
-        {
-            "complex_modifications": {
-                "rules": [
-                    {
-                        "description": "disable cmd + tab",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "tab",
-                                    "modifiers": { "mandatory": ["left_command"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "out",
-                                        "modifiers": []
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Hyper-k :: Postman",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "p",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
-                                },
-                                "to": [{ "software_function": { "open_application": { "file_path": "/Applications/Postman.app" } } }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Hyper-b :: finder",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
-                                },
-                                "to": [{ "shell_command": "open /System/Library/CoreServices/Finder.app" }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Hyper-k :: kitty",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
-                                },
-                                "to": [{ "software_function": { "open_application": { "file_path": "/Applications/Kitty.app" } } }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Hyper-b :: chrome",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "b",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
-                                },
-                                "to": [{ "software_function": { "open_application": { "file_path": "/Applications/Google Chrome.app" } } }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "manipulators": [
-                            {
-                                "description": "Change caps_lock to command+control+option+shift.",
-                                "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": { "optional": ["any"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "left_shift",
-                                        "modifiers": ["left_command", "left_control", "left_option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Hyper-s :: slack",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
-                                },
-                                "to": [{ "software_function": { "open_application": { "file_path": "/Applications/Slack.app" } } }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Hyper-c :: Cursor",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
-                                },
-                                "to": [{ "software_function": { "open_application": { "file_path": "/Applications/Cursor.app" } } }],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Hyper-a :: Arc",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "a",
-                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option", "left_shift"] }
-                                },
-                                "to": [{ "software_function": { "open_application": { "file_path": "/Applications/Arc.app" } } }],
-                                "type": "basic"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "fn_function_keys": [
-                {
-                    "from": { "key_code": "f3" },
-                    "to": [{ "key_code": "vk_none" }]
-                },
-                {
-                    "from": { "key_code": "f4" },
-                    "to": [{ "key_code": "vk_none" }]
-                },
-                {
-                    "from": { "key_code": "f8" },
-                    "to": [{ "key_code": "vk_none" }]
-                }
-            ],
-            "name": "Default profile",
-            "selected": true,
-            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
-        }
-    ]
-}
-    </pre
-      >
+      <script src="https://gist.github.com/Jayesh-11/bf8ca359fc73e1f014af5ad7c85a39ed.js"></script>
     </div>
     <span>&thinsp;</span>
     <footer>
@@ -275,12 +127,20 @@
       const karabinerJSONCode = document.getElementById(
         "karabiner-json-code",
       ).innerText;
-      const karabinerJSONCodeCopyButton = document.getElementById(
-        "karabiner-json-code-copy",
-      );
-      karabinerJSONCodeCopyButton.addEventListener("click", () =>
-        window.navigator.clipboard.writeText(karabinerJSONCode),
-      );
+      const karabinerJSONCodeCopyButton = document
+        .getElementById("karabiner-json-code-copy")
+        .addEventListener("click", async () => {
+          const link =
+            document.getElementsByClassName("Link--inTextBlock")[0].href;
+          const updatedLink = link
+            .replace("github", "githubusercontent")
+            .split("/")
+            .slice(0, -2)
+            .join("/");
+          const res = await fetch(updatedLink);
+          const code = await res.text();
+          window.navigator.clipboard.writeText(code);
+        });
     </script>
     <!-- Google tag (gtag.js) -->
     <script
