@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      Decreasing docket image size with multistage builds | Jayesh Vyavahare
+    </title>
+    <meta
+      name="description"
+      content="Using multi-stage Docker builds to dramatically reduce Rust server image sizes, with a real example going from 2.4GB to 112MB."
+    />
+    <style type="text/css">
+      body {
+        margin: 40px auto;
+        max-width: 650px;
+        line-height: 1.6;
+        font-size: 16px;
+        color: #444;
+        padding: 0 10px;
+        font-family: monospace;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.2;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      pre {
+        color: #666;
+        page-break-inside: avoid;
+        overflow: auto;
+        word-wrap: break-word;
+        max-height: 320px;
+      }
+
+      footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .footer-socials {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Decreasing docket image size with multistage builds</h1>
+    </header>
+    <main>
+      <p><strong>Published:</strong> Jan 16 2026</p>
+      <hr />
+      <p><strong>In short:</strong> Multi-stage build.</p>
+      <p>
+        I was building a Rust server to be deployed as a Docker image on a VM.
+        Once I built it, the size of the image was <strong>2.4GB!!!</strong>.
+      </p>
+      <p>Where did this size come from? Mostly two places:</p>
+      <ol>
+        <li>
+          the <code>rust:trixie</code> image was already big enough (~500MB)
+        </li>
+        <li>
+          the installed Cargo dependencies, i.e the build artifacts (the rest)
+        </li>
+      </ol>
+      <pre>
+ARG RUST_VERSION=1.92.0
+ARG APP_NAME=form_v2
+FROM rust:${RUST_VERSION}-trixie AS build
+
+ARG APP_NAME
+WORKDIR /app
+
+COPY . .
+
+RUN cargo build --locked -r
+
+CMD [".target/release/form_v2"]
+</pre
+      >
+      <br />
+      <h2>BOOM!! 112MB</h2>
+      <p>
+        Just copying the built binary in a smaller base image i.e the new image
+        does not have extra artifacts :
+      </p>
+      <pre>
+ARG RUST_VERSION=1.92.0
+ARG APP_NAME=form_v2
+FROM rust:${RUST_VERSION}-trixie AS build
+
+ARG APP_NAME
+WORKDIR /app
+
+COPY . .
+
+RUN cargo build --locked -r
+
+FROM debian:trixie-slim
+COPY --from=build /app/target/release/form_v2 /
+
+EXPOSE 8000
+
+CMD ["./form_v2"]
+</pre
+      >
+      Resources :
+      <ul>
+        <li>
+          <a
+            href="https://docs.docker.com/build/building/multi-stage/#use-multi-stage-builds"
+            target="_blank"
+            >Official docs</a
+          >
+        </li>
+      </ul>
+    </main>
+    <span>&thinsp;</span>
+    <footer>
+      <div class="footer-socials">
+        <a class="redirect" target="_blank" href="https://github.com/Jayesh-11"
+          >Github</a
+        >
+        <a class="redirect" target="_blank" href="https://x.com/Jayesh_eleven"
+          >X</a
+        >
+        <a
+          class="redirect"
+          target="_blank"
+          href="https://www.youtube.com/@jayesh_dev"
+          >Youtube</a
+        >
+      </div>
+      <a class="redirect" href="../index.html">Home</a>
+    </footer>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-GVB59BB2Z1"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-GVB59BB2Z1");
+    </script>
+  </body>
+</html>
