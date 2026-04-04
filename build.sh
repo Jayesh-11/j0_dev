@@ -1,0 +1,1 @@
+npx parcel build index.html blogs/* && mv sitemap.xml dist/
